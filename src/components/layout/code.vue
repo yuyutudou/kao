@@ -28,10 +28,14 @@
         <span class="m-3">创建代码仓库</span>
       </div>
     </div>
-    <div v-if="activeTab === recent">
+    <div v-if="activeTab === 'recent'">
       <recent />
-      <all></all>
-      <openSource></openSource>
+    </div>
+    <div v-else-if="activeTab === 'all'">
+      <all />
+    </div>
+    <div v-else-if="activeTab === 'openSource'">
+      <openSource />
     </div>
   </div>
 </template>
@@ -42,7 +46,7 @@ import recent from "./recent.vue";
 import all from "./all.vue";
 import openSource from "./openSource.vue";
 
-const activeTab = ref(null);
+const activeTab = ref("recent"); // 默认显示最近访问
 </script>
 
 <style scoped></style>

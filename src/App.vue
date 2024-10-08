@@ -1,10 +1,9 @@
+<script setup>
+import { RouterLink, RouterView } from "vue-router";
+</script>
+
 <template>
-  <!-- <Land></Land> -->
-  <sidebar></sidebar>
+  <RouterView />
 </template>
 
-<script setup>
-// import Land from "./components/land/Land.vue";
-import sidebar from "./components/layout/sidebar.vue";
-</script>
 <style scoped></style>
