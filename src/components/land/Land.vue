@@ -1,6 +1,8 @@
 <template>
   <div class="flex">
-    <img src="../../assets/appm3V1L6Y3C3podIGShCo686dXRRY4i.png" />
+    <div class="h-[100vh] w-[30vw]">
+      <img src="../../assets/appm3V1L6Y3C3podIGShCo686dXRRY4i.png" />
+    </div>
     <div class="w-full md:w-2/3 text-center space-y-6">
       <p class="text-2xl font-semibold text-gray-800">登入即刻创造你的应用</p>
       <div class="flex flex-col space-y-4">
@@ -44,13 +46,14 @@
 
 <script setup>
 import axios from "axios";
+// import { getAccessToken } from "../../api/index";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 // 不需要 export default
 const router = useRouter();
-const username = ref("");
-const password = ref("");
+const username = ref("3483437651@qq.com");
+const password = ref("522628ljr");
 const agree = ref(false);
 const loading = ref(false);
 
@@ -91,14 +94,13 @@ const login = async () => {
     const token = response.data.access_token;
     localStorage.setItem("oauth_token", token);
     console.log("登录成功，获取到了访问令牌！");
-
-    // 登录成功后跳转到主页（示例）
+    router.push("/home");
   } catch (error) {
     const errorMessage = error.response
       ? error.response.data.error_description
       : error.message;
     console.log("登录失败: " + errorMessage);
-    router.push("/home"); //登陆失败也跳转
+    //登陆失败也跳转
   } finally {
     loading.value = false; // 不论成功或失败，都要恢复按钮状态
   }
@@ -106,10 +108,6 @@ const login = async () => {
 </script>
 
 <style scoped>
-img {
-  width: 550px;
-  object-fit: fill;
-}
 .flex {
   display: flex; /* 启用 flexbox 布局 */
   align-items: center; /* 垂直居中对齐 */
