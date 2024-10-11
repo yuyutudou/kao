@@ -1,4 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
+import Land from "../components/land/Land.vue";
+import sidebar from "../components/layout/sidebar.vue";
+import layout from "../components/layout/layout.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,13 +10,20 @@ const router = createRouter({
     {
       path: "/",
       name: "login",
-      component: () => import("../components/land/Land.vue"),
+      component: Land,
     },
     // 首页
     {
       path: "/home",
       name: "home",
-      component: () => import("../components/layout/sidebar.vue"),
+      component: sidebar,
+      children: [
+        {
+          path: "/create",
+          name: "create",
+          component: layout,
+        },
+      ],
     },
   ],
 });

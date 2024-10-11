@@ -1,5 +1,7 @@
 import { createApp } from "vue";
 import "./style.css";
+
+import "element-plus/theme-chalk/el-message.css";
 import { Icon } from "@iconify/vue";
 import router from "./router";
 import App from "./App.vue";

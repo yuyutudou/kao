@@ -84,23 +84,18 @@ const login = async () => {
       "a9b8dea038f275ec362d8fb791325d04945da43978c7e63ef164a4115ab6e52c"
     ); //  Secret
     params.append("scope", "user_info projects issues");
-
-    console.log("请求参数:", params.toString());
-
     const response = await axios.post("https://gitee.com/oauth/token", params, {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     });
-
+    console.log("响应数据:", response.data);
     const token = response.data.access_token;
     localStorage.setItem("oauth_token", token);
-    console.log("登录成功，获取到了访问令牌！");
     router.push("/home");
   } catch (error) {
     const errorMessage = error.response
       ? error.response.data.error_description
       : error.message;
     console.log("登录失败: " + errorMessage);
-    //登陆失败也跳转
   } finally {
     loading.value = false; // 不论成功或失败，都要恢复按钮状态
   }
@@ -111,5 +106,10 @@ const login = async () => {
 .flex {
   display: flex; /* 启用 flexbox 布局 */
   align-items: center; /* 垂直居中对齐 */
+}
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 填充整个容器，可能会裁剪图片 */
 }
 </style>

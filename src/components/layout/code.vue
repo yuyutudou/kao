@@ -25,7 +25,7 @@
         开源仓库
       </div>
       <div class="bg-black text-white m-3 text-sm ml-[65vw]">
-        <span class="m-3">创建代码仓库</span>
+        <span class="m-3" @click="">创建代码仓库</span>
       </div>
     </div>
     <div v-if="activeTab === 'recent'">
